@@ -1,0 +1,329 @@
+/* Google Font Import - Must be first */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+/* Web3 + Minecraft Theme Configuration */
+@theme {
+  /* Custom Pixel Font */
+  --font-pixel: 'Press Start 2P', 'Courier New', monospace;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Solid Color Palette - No Gradients */
+  --color-bg-primary: #0a0a0f;
+  --color-bg-secondary: #12121a;
+  --color-bg-card: #1a1a25;
+  --color-bg-hover: #252535;
+
+  /* Border Colors */
+  --color-border: #2a2a3a;
+  --color-border-active: #4a4a6a;
+
+  /* Text Colors */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a0a0b0;
+  --color-text-muted: #606070;
+
+  /* Tier Colors - Solid */
+  --color-tier-hot: #ff4444;
+  --color-tier-hot-bg: #331111;
+  --color-tier-watch: #ffaa00;
+  --color-tier-watch-bg: #332200;
+  --color-tier-monitor: #4488ff;
+  --color-tier-monitor-bg: #112244;
+
+  /* Scam Score Colors */
+  --color-safe: #22cc66;
+  --color-safe-bg: #113322;
+  --color-warning: #ffaa00;
+  --color-warning-bg: #332200;
+  --color-danger: #ff4444;
+  --color-danger-bg: #331111;
+
+  /* Accent Colors */
+  --color-accent-purple: #8844ff;
+  --color-accent-cyan: #00ccff;
+  --color-accent-green: #22cc66;
+
+  /* Spacing */
+  --spacing-pixel: 4px;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-mono);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Blocky Scrollbar - Minecraft Style */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+  border: 2px solid var(--color-border);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-active);
+  border: 2px solid var(--color-border);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-purple);
+}
+
+/* Utility Classes */
+.font-pixel {
+  font-family: var(--font-pixel);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Card Base - Blocky Style */
+.card {
+  background-color: var(--color-bg-card);
+  border: 3px solid var(--color-border);
+  padding: 16px;
+  transition: border-color 0.15s ease;
+}
+
+.card:hover {
+  border-color: var(--color-border-active);
+}
+
+/* Tier Badges - With Glow */
+.badge-hot {
+  background-color: var(--color-tier-hot-bg);
+  border: 2px solid var(--color-tier-hot);
+  color: var(--color-tier-hot);
+  box-shadow: 0 0 8px var(--color-tier-hot-bg);
+  animation: pulse-glow 2s infinite;
+}
+
+.badge-watch {
+  background-color: var(--color-tier-watch-bg);
+  border: 2px solid var(--color-tier-watch);
+  color: var(--color-tier-watch);
+  box-shadow: 0 0 5px var(--color-tier-watch-bg);
+}
+
+.badge-monitor {
+  background-color: var(--color-tier-monitor-bg);
+  border: 2px solid var(--color-tier-monitor);
+  color: var(--color-tier-monitor);
+}
+
+/* Price Flash Animations */
+@keyframes flash-green {
+  0% {
+    background-color: rgba(34, 204, 102, 0.2);
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
+
+@keyframes flash-red {
+  0% {
+    background-color: rgba(255, 68, 68, 0.2);
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
+
+.flash-green {
+  animation: flash-green 1s ease-out;
+}
+
+.flash-red {
+  animation: flash-red 1s ease-out;
+}
+
+/* Scam Score Indicators */
+.score-safe {
+  background-color: var(--color-safe-bg);
+  border: 2px solid var(--color-safe);
+  color: var(--color-safe);
+}
+
+.score-warning {
+  background-color: var(--color-warning-bg);
+  border: 2px solid var(--color-warning);
+  color: var(--color-warning);
+}
+
+.score-danger {
+  background-color: var(--color-danger-bg);
+  border: 2px solid var(--color-danger);
+  color: var(--color-danger);
+}
+
+/* Buttons */
+.btn {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  padding: 8px 16px;
+  border: 3px solid;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  background-color: var(--color-accent-purple);
+  border-color: var(--color-accent-purple);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border-color: var(--color-border-active);
+  color: var(--color-text-secondary);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-accent-cyan);
+  color: var(--color-accent-cyan);
+}
+
+/* Input Fields */
+.input {
+  font-family: var(--font-mono);
+  background-color: var(--color-bg-secondary);
+  border: 3px solid var(--color-border);
+  padding: 10px 14px;
+  color: var(--color-text-primary);
+  font-size: 14px;
+  width: 100%;
+  transition: border-color 0.15s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-accent-cyan);
+}
+
+.input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Animations */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-glow,
+.pulse {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Toast Notifications */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border: 3px solid;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  z-index: 1000;
+}
+
+/* Skeleton Loader */
+.skeleton {
+  background: linear-gradient(90deg,
+      var(--color-bg-card) 0%,
+      var(--color-bg-hover) 50%,
+      var(--color-bg-card) 100%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Tooltip */
+.tooltip {
+  position: relative;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 10px;
+  background-color: var(--color-bg-primary);
+  border: 2px solid var(--color-border);
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.15s ease;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
